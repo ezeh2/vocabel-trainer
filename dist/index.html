@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f3f0e7">
+  <meta name="description" content="Offline Spanish–German vocabulary practice with CSV import and speech.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Spanish German Vocabulary Trainer</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div><p class="eyebrow">Español · Deutsch</p><h1>Palabras</h1></div>
+      <button id="import-button" class="import-button" type="button" aria-label="CSV-Datei importieren"><span aria-hidden="true">⇧</span><small>CSV</small></button>
+      <input id="file-input" class="visually-hidden" type="file" accept=".csv,text/csv,text/plain">
+    </header>
+    <section class="progress-panel" aria-label="Lernfortschritt">
+      <div class="progress-text"><div><strong id="learned-count">0</strong><span> von </span><span id="word-count">0</span><span> gelernt</span></div><span id="progress-percent">0%</span></div>
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-bar" class="progress-bar"></div></div>
+    </section>
+    <nav class="mode-switch" aria-label="Übungsmodus">
+      <button id="cards-mode" class="active" type="button">▤ <span>Karten</span></button>
+      <button id="quiz-mode" type="button">⤨ <span>Auswahl</span></button>
+    </nav>
+    <section id="card-view" class="study-card">
+      <div class="card-topline"><span>SPANISCH</span><span id="card-position"></span></div>
+      <div class="word-row question"><h2 id="spanish-text"></h2><button id="speak-spanish" class="speak" type="button" aria-label="Spanischen Text vorlesen">🔊</button></div>
+      <div id="answer" class="answer"><span>DEUTSCH</span><div class="word-row"><h3 id="german-text">••••••••</h3><button id="speak-german" class="speak secondary hidden" type="button" aria-label="Deutschen Text vorlesen">🔊</button></div></div>
+      <button id="reveal-button" class="primary main-action" type="button">Übersetzung zeigen</button>
+      <div id="answer-actions" class="answer-actions hidden"><button id="repeat-button" class="secondary-action" type="button">✕ Noch üben</button><button id="known-button" class="primary" type="button">✓ Gewusst</button></div>
+    </section>
+    <section id="quiz-view" class="quiz-card hidden">
+      <div class="card-topline"><span>WÄHLE DIE ÜBERSETZUNG</span><span id="quiz-position"></span></div>
+      <div class="word-row quiz-question"><h2 id="quiz-spanish"></h2><button id="quiz-speak" class="speak" type="button" aria-label="Spanischen Text vorlesen">🔊</button></div>
+      <div id="choices" class="choices"></div>
+      <button id="quiz-next" class="primary main-action hidden" type="button">Weiter</button>
+    </section>
+    <section id="empty-view" class="empty-card hidden">
+      <div class="empty-icon" aria-hidden="true">⇧</div><h2>Vokabeln importieren</h2>
+      <p>CSV mit Spanisch in Spalte 1 und Deutsch in Spalte 2.</p>
+      <button id="empty-import" class="primary" type="button">CSV auswählen</button>
+    </section>
+    <footer><button id="reset-button" type="button">↻ Beispielwörter wiederherstellen</button><p>Die Daten bleiben auf diesem Gerät.</p></footer>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
+

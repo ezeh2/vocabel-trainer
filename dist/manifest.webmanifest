@@ -1,0 +1,11 @@
+{
+  "name": "Spanish German Vocabulary Trainer",
+  "short_name": "Palabras",
+  "description": "Offline Spanish–German vocabulary practice",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f0e7",
+  "theme_color": "#f3f0e7",
+  "icons": [{"src":"favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]
+}
+
