@@ -7,6 +7,10 @@ third-party dependency.
 ## Features
 
 - Import two-column Spanish–German CSV files
+- Organize vocabulary in categories
+- Import categories from an optional third CSV column
+- Create categories directly in the application
+- Train exactly one selected category at a time
 - Flashcard and multiple-choice practice
 - Spanish and German pronunciation using the Web Speech API
 - Local progress storage
@@ -26,19 +30,24 @@ the files from `dist/`; all vocabulary processing happens in the browser.
 | `dist/manifest.webmanifest` | Installation metadata |
 
 Imported data and scores are stored in `localStorage` under
-`palabras-words`. Files are read locally with the Browser File API and are
-never uploaded. Speech uses `window.speechSynthesis`; no audio service is
-contacted by the application.
+`palabras-words`. The category list and current selection use
+`palabras-categories` and `palabras-selected-category`. Older saved entries
+without a category are migrated to `Allgemein`. Files are read locally with
+the Browser File API and are never uploaded. Speech uses
+`window.speechSynthesis`; no audio service is contacted by the application.
 
 ## CSV format
 
 ```csv
 "la manzana";"der Apfel"
 "el durazno";"der Pfirsich"
+"patinar";"Schlittschuh laufen";"Sport"
 ```
 
-The first column contains Spanish and the second German. Semicolon, tab and
-comma delimiters are recognized. A header row is optional.
+The first column contains Spanish, the second German and the optional third
+column a category. Semicolon, tab and comma delimiters are recognized. A
+header row is optional. When the category column is missing or empty, the app
+asks which existing category should receive those entries.
 
 ## Run locally
 

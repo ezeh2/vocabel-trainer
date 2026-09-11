@@ -17,6 +17,13 @@
       <button id="import-button" class="import-button" type="button" aria-label="CSV-Datei importieren"><span aria-hidden="true">⇧</span><small>CSV</small></button>
       <input id="file-input" class="visually-hidden" type="file" accept=".csv,text/csv,text/plain">
     </header>
+    <section class="category-panel" aria-label="Kategorie auswählen">
+      <label for="category-select">Kategorie</label>
+      <div class="category-controls">
+        <select id="category-select" aria-label="Trainingskategorie"></select>
+        <button id="add-category-button" type="button" aria-label="Neue Kategorie erstellen">＋</button>
+      </div>
+    </section>
     <section class="progress-panel" aria-label="Lernfortschritt">
       <div class="progress-text"><div><strong id="learned-count">0</strong><span> von </span><span id="word-count">0</span><span> gelernt</span></div><span id="progress-percent">0%</span></div>
       <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-bar" class="progress-bar"></div></div>
@@ -40,12 +47,30 @@
     </section>
     <section id="empty-view" class="empty-card hidden">
       <div class="empty-icon" aria-hidden="true">⇧</div><h2>Vokabeln importieren</h2>
-      <p>CSV mit Spanisch in Spalte 1 und Deutsch in Spalte 2.</p>
+      <p id="empty-message">CSV mit Spanisch in Spalte 1, Deutsch in Spalte 2 und optionaler Kategorie in Spalte 3.</p>
       <button id="empty-import" class="primary" type="button">CSV auswählen</button>
     </section>
     <footer><button id="reset-button" type="button">↻ Beispielwörter wiederherstellen</button><p>Die Daten bleiben auf diesem Gerät.</p></footer>
   </main>
+
+  <dialog id="category-dialog">
+    <form id="category-form" method="dialog">
+      <h2>Neue Kategorie</h2>
+      <label for="category-name">Name</label>
+      <input id="category-name" maxlength="50" autocomplete="off" required>
+      <div class="dialog-actions"><button value="cancel" class="secondary-action">Abbrechen</button><button value="default" class="primary">Erstellen</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="import-dialog">
+    <form id="import-form" method="dialog">
+      <h2>Kategorie zuordnen</h2>
+      <p>Für Einträge ohne dritte CSV-Spalte:</p>
+      <label for="import-category">Kategorie</label>
+      <select id="import-category"></select>
+      <div class="dialog-actions"><button value="cancel" class="secondary-action">Abbrechen</button><button value="default" class="primary">Importieren</button></div>
+    </form>
+  </dialog>
   <script src="app.js" defer></script>
 </body>
 </html>
-
