@@ -206,7 +206,14 @@ function createCategory(name){
   else{categories.push(normalized);selectedCategory=normalized}
   resetCard();saveState();render();
 }
-function openFilePicker(){$("file-input").click()}
+function openFilePicker(){
+  const input=$("file-input");
+  input.value="";
+  if(typeof input.showPicker==="function"){
+    try{input.showPicker();return}catch{}
+  }
+  input.click();
+}
 
 $("import-button").addEventListener("click",openFilePicker);
 $("empty-import").addEventListener("click",openFilePicker);
